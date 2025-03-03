@@ -4,9 +4,9 @@
 This is a Flutter application developed as part of an assignment. The app includes various UI elements and handles multiple edge cases efficiently. The app is based on crud operation. It is available as an APK, a working web version, and a demonstration video.
 
 ## Features
-- **Cross-platform**: Runs on Android, iOS, and Web
+- **Cross-platform**: Runs on Android and Web
 - **State Management**: Utilizes Bloc
-- **Offline Support**: Uses local storage for caching (Sqlite)
+- **Offline Support**: Uses local storage (Sqlite)
 
 ## Screenshots
 
