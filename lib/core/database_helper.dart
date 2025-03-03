@@ -1,5 +1,7 @@
+import 'package:flutter/foundation.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
+import 'package:sqflite_common_ffi_web/sqflite_ffi_web.dart';
 
 import '../data/models/employee_model.dart';
 
@@ -16,15 +18,23 @@ class DatabaseHelper {
   }
 
   Future<Database> _initDB(String filePath) async {
-    try{ 
-    final dbPath = await getDatabasesPath();
-    final path = join(dbPath, filePath);
-
+    // try{ 
+    // final dbPath = await getDatabasesPath();
+    // final path = join(dbPath, filePath);
+   try {
+      if (kIsWeb) {
+        // Web Database
+        return databaseFactoryFfiWeb.openDatabase(filePath);
+      } else {
+        // Mobile Database (Android/iOS)
+        final dbPath = await getDatabasesPath();
+        final path = join(dbPath, filePath);
     return await openDatabase(
       path,
       version: 1,
       onCreate: _createDB,
     );
+      }
     
   }catch (e) {
     throw Exception("Database initialization failed: $e");

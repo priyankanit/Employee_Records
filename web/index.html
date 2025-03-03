@@ -31,6 +31,19 @@
 
   <title>employee_records</title>
   <link rel="manifest" href="manifest.json">
+
+  <script>
+    if (navigator.serviceWorker) {
+      navigator.serviceWorker.register('sqflite_sw.js')
+        .then((registration) => {
+          console.log("Service Worker registered with scope:", registration.scope);
+        })
+        .catch((error) => {
+          console.error("Service Worker registration failed:", error);
+        });
+    }
+  </script>
+  
 </head>
 <body>
   <script src="flutter_bootstrap.js" async></script>
